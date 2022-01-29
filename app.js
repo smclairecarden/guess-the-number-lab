@@ -15,24 +15,33 @@ const game = {
   }
 }
 
-console.log(game.play())
+
 
 let  small = this.smallestNum
 let big = this.biggestNum
-let playerValue = 45
-
-
+let playerValue = 60
 
 
 function getGuess(small, big) {
-  return `Enter a guess between ${small} and ${big}: ${playerValue}: `
+  return `Enter a guess between ${small} and ${big}: ${playerValue} `
+}
+
+do {
+  game.play()
+} while(getGuess())
+
+
+if(playerValue > this.smallestNum || playerValue < this.biggestNum){
+  prevGuesses.push()
 }
 
 
-console.log(getGuess(1, 100))
 
-do {
-  game.play
-} while(playerValue >= this.smallestNum || playerValue <= this.biggestNum)
+
+
+
+
+
+
 
 
