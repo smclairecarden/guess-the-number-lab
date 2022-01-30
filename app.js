@@ -10,45 +10,58 @@ const game = {
   smallestNum: 1,
   secretNum: null,
   prevGuesses: [],
-  playerValue: null,
-  play: function() {
-    this.secretNum = Math.floor(Math.random() * 
-    (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
-    return this.secretNum
-    let guesses
+  
+  render: function() { 
+    console.log('PREVGUESSES', this.prevGuesses)
+
+    console.log(this.secretNum)
+    
+    if(this.prevGuesses[this.prevGuesses.length -  1] > this.secretNum){
+    
+      alert(`Your guess is too high! Previous guesses ${this.prevGuesses.join(' , ')}.`)
+    } else if(this.prevGuesses[this.prevGuesses.length -  1] < this.secretNum) {
+    
+      alert(`Your guess is too low! Previous guesses: ${this.prevGuesses.join(' , ')}.`)
+    } else if(this.prevGuesses[this.prevGuesses.length -  1] === this.secretNum) {
+    
+      alert(`Congrats! You guessed the number in ${this.prevGuesses.length} tries!`)
+      }
+  },
+
+    getGuess: function() { 
+    
+    let playerGuess
     do {
-    guesses = this.getGuess()
-    this.prevGuesses.push(guesses)
-    console.log(this.prevGuesses)
-    } while(guesses ==! this.secretNum) 
-     console.log(guesses)
+      playerGuess = parseInt(prompt(`Enter a guess between ${this.smallestNum} and ${this.biggestNum}:`))
+    }
+    while(isNaN(playerGuess) || playerGuess < this.smallesttNum || playerGuess > this.biggestNum) 
+      
+    return parseInt(playerGuess)
     },
 
-  getGuess: function() { 
-  playerGuess = parseInt(prompt(`Enter a guess between ${game.smallestNum} and ${game.biggestNum}:`))
-  while(game.playerValue > this.smallestNum || game.playerValue < this.biggestNum) {
-    return playerGuess
-  } 
-  },
-//render: alertMessage() { 
-  // if(game.playerValue === this.secretNum) {
-  // console.log(`Congrats! You guessed the number in ${game.prevGuesses.length}`)
-  // } else if(playerValue > this.secretNum) {
-  // console.log(`Your guess is too high! Previous guesses ${game.prevGuesses}`)
-  // } else {
-  // console.log(`Your guess is too low! Previous guesses: ${game.prevGuesses}`)
-  // }
-//}
+    play: function() {
+   
 
+    this.secretNum = Math.floor(Math.random() * (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
+    console.log(this.secretNum)
+
+    do {
+
+    this.prevGuesses.push(this.getGuess())
+    this.render()
+    } while(this.prevGuesses[this.prevGuesses.length -  1] !== this.secretNum); 
+    }
+    
 }
   
   
+game.play()
+// console.log(game.secretNum)
+// console.log(game.getGuess())
 
 
-
-console.log(game.play())
-console.log(game.getGuess())
-
+//console.log(game.getGuess())
+//console.log(game.render())
 
 
 
