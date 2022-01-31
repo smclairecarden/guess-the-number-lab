@@ -1,18 +1,24 @@
 
-
-
-
-
-
 const game = {
   title: 'Guess the Number!',
   biggestNum: 100,
   smallestNum: 1,
   secretNum: null,
   prevGuesses: [],
+
+  getGuess: function() { 
+    
+    let playerGuess
+    do {
+      playerGuess = parseInt(prompt(`Enter a guess between ${this.smallestNum} and ${this.biggestNum}:`))
+    }
+    while(isNaN(playerGuess) || playerGuess < this.smallesttNum || playerGuess > this.biggestNum) 
+      
+    return parseInt(playerGuess)
+    },
   
   render: function() { 
-    console.log('PREVGUESSES', this.prevGuesses)
+    //console.log('PREVGUESSES', this.prevGuesses)
 
     console.log(this.secretNum)
     
@@ -27,17 +33,6 @@ const game = {
       alert(`Congrats! You guessed the number in ${this.prevGuesses.length} tries!`)
       }
   },
-
-    getGuess: function() { 
-    
-    let playerGuess
-    do {
-      playerGuess = parseInt(prompt(`Enter a guess between ${this.smallestNum} and ${this.biggestNum}:`))
-    }
-    while(isNaN(playerGuess) || playerGuess < this.smallesttNum || playerGuess > this.biggestNum) 
-      
-    return parseInt(playerGuess)
-    },
 
     play: function() {
    
@@ -56,12 +51,7 @@ const game = {
   
   
 game.play()
-// console.log(game.secretNum)
-// console.log(game.getGuess())
 
-
-//console.log(game.getGuess())
-//console.log(game.render())
 
 
 
